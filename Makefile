@@ -1,6 +1,17 @@
--include $(shell curl -sSL -o .build-harness "https://cloudposse.tools/build-harness"; echo .build-harness)
+export TERRAFORM_SOURCE_DIR ?= /src
 
-all: init readme
+all: docs
+
+readme: docs/terraform.md
+	atmos generate docs readme
+	atmos generate docs component
+
+.PHONY : docs/terraform.md
+## Update `docs/terraform.md` from `terraform-docs`
+docs/terraform.md:
+	@echo "<!-- markdownlint-disable -->" > $@ ; \
+	terraform-docs --lockfile=false md .$(TERRAFORM_SOURCE_DIR) >> $@ ; \
+	echo "<!-- markdownlint-restore -->" >> $@
 
 test::
 	@echo "🚀 Starting tests..."

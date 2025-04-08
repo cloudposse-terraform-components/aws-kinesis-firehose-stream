@@ -1,0 +1,26 @@
+# Import the default Atmos configuration from the .github repository
+# https://github.com/cloudposse-terraform-components/.github/blob/main/templates/atmos.component.yaml
+import:
+  # TODO replace branch with main
+  - "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/refs/heads/feat/atmos-docs/templates/atmos.component.yaml"
+
+# Include any necessary overrides below
+docs:
+  # Generate README for the defined component
+  component:
+    base-dir: src/
+    input: []
+    # TODO point to main
+    # template: "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/blob/main/templates/README.md.simple.gotmpl"
+    template: "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/e872f070f473a43c2540b6b1c604b085b7445759/templates/README.md.simple.gotmpl"
+    output: "README.md"
+    terraform:
+      source: src/
+      enabled: false
+      format: "markdown"
+      show_providers: false
+      show_inputs: true
+      show_outputs: true
+      sort_by: "name"
+      hide_empty: false
+      indent_level: 2
