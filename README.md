@@ -1,9 +1,9 @@
 
 
 <!-- markdownlint-disable -->
-<a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse-terraform-components/template/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
+<a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     <p align="right">
-<a href="https://github.com/cloudposse-terraform-components/template/releases/latest"><img src="https://img.shields.io/github/release/cloudposse-terraform-components/template.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<a href="https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/releases/latest"><img src="https://img.shields.io/github/release/cloudposse-terraform-components/aws-kinesis-firehose-stream.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -27,7 +27,7 @@
 
 -->
 
-Description of this component
+This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery.
 
 
 > [!TIP]
@@ -47,16 +47,19 @@ Description of this component
 
 ## Usage
 
-**Stack Level**: Regional or Test47
+**Stack Level**: Regional
 
 Here's an example snippet for how to use this component.
 
 ```yaml
 components:
   terraform:
-    foo:
+    kinesis-firehose-stream/s3-to-cloudwatch:
+      metadata:
+        component: kinesis-firehose-stream
       vars:
-        enabled: true
+        name: s3-cloudwatch-stream
+        destination_bucket_component_name: s3-bucket/cloudwatch
 ```
 
 > [!IMPORTANT]
@@ -169,12 +172,12 @@ For additional context, refer to some of these links.
 > ✅ Your team owns everything.<br/>
 > ✅ 100% Open Source and backed by fanatical support.<br/>
 >
-> <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
 > <details><summary>📚 <strong>Learn More</strong></summary>
 >
 > <br/>
 >
-> Cloud Posse is the leading [**DevOps Accelerator**](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=commercial_support) for funded startups and enterprises.
+> Cloud Posse is the leading [**DevOps Accelerator**](https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=commercial_support) for funded startups and enterprises.
 >
 > *Your team can operate like a pro today.*
 >
@@ -186,7 +189,7 @@ For additional context, refer to some of these links.
 > - **Security Baseline.** Establish a secure environment from the start, with built-in governance, accountability, and comprehensive audit logs, safeguarding your operations.
 > - **GitOps.** Empower your team to manage infrastructure changes confidently and efficiently through Pull Requests, leveraging the full power of GitHub Actions.
 >
-> <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
 >
 > #### Day-2: Your Operational Mastery
 > - **Training.** Equip your team with the knowledge and skills to confidently manage the infrastructure, ensuring long-term success and self-sufficiency.
@@ -197,7 +200,7 @@ For additional context, refer to some of these links.
 > - **Migration Assistance.** Accelerate your migration process with our dedicated support, minimizing disruption and speeding up time-to-value.
 > - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
 >
-> <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
+> <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
 > </details>
 
 ## ✨ Contributing
@@ -208,14 +211,14 @@ This project is under active development, and we encourage contributions from ou
 
 Many thanks to our outstanding contributors:
 
-<a href="https://github.com/cloudposse-terraform-components/template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=cloudposse-terraform-components/template&max=24" />
+<a href="https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cloudposse-terraform-components/aws-kinesis-firehose-stream&max=24" />
 </a>
 
-For 🐛 bug reports & feature requests, please use the [issue tracker](https://github.com/cloudposse-terraform-components/template/issues).
+For 🐛 bug reports & feature requests, please use the [issue tracker](https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/issues).
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
- 1. Review our [Code of Conduct](https://github.com/cloudposse-terraform-components/template/?tab=coc-ov-file#code-of-conduct) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
+ 1. Review our [Code of Conduct](https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/?tab=coc-ov-file#code-of-conduct) and [Contributor Guidelines](https://github.com/cloudposse/.github/blob/main/CONTRIBUTING.md).
  2. **Fork** the repo on GitHub
  3. **Clone** the project to your own machine
  4. **Commit** changes to your own branch
@@ -226,16 +229,16 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ### 🌎 Slack Community
 
-Join our [Open Source Community](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=slack) on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+Join our [Open Source Community](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=slack) on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
 
 ### 📰 Newsletter
 
-Sign up for [our newsletter](https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=newsletter) and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
+Sign up for [our newsletter](https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=newsletter) and join 3,000+ DevOps engineers, CTOs, and founders who get insider access to the latest DevOps trends, so you can always stay in the know.
 Dropped straight into your Inbox every week — and usually a 5-minute read.
 
-### 📆 Office Hours <a href="https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=office_hours"><img src="https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png" align="right" /></a>
+### 📆 Office Hours <a href="https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=office_hours"><img src="https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png" align="right" /></a>
 
-[Join us every Wednesday via Zoom](https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=office_hours) for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
+[Join us every Wednesday via Zoom](https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=office_hours) for your weekly dose of insider DevOps trends, AWS news and Terraform insights, all sourced from our SweetOps community, plus a _live Q&A_ that you can’t find anywhere else.
 It's **FREE** for everyone!
 ## License
 
@@ -277,6 +280,6 @@ All other trademarks referenced herein are the property of their respective owne
 Copyright © 2017-2025 [Cloud Posse, LLC](https://cpco.io/copyright)
 
 
-<a href="https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/template&utm_content=readme_footer_link"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
+<a href="https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=readme_footer_link"><img alt="README footer" src="https://cloudposse.com/readme/footer/img"/></a>
 
-<img alt="Beacon" width="0" src="https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse-terraform-components/template?pixel&cs=github&cm=readme&an=template"/>
+<img alt="Beacon" width="0" src="https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse-terraform-components/aws-kinesis-firehose-stream?pixel&cs=github&cm=readme&an=aws-kinesis-firehose-stream"/>
