@@ -12,7 +12,7 @@ type ComponentSuite struct {
 }
 
 func (s *ComponentSuite) TestBasic() {
-	const component = "example/basic"
+	const component = "aws-kinesis-firehose-stream/basic"
 	const stack = "default-test"
 	const awsRegion = "us-east-2"
 
@@ -23,9 +23,8 @@ func (s *ComponentSuite) TestBasic() {
 	s.DriftTest(component, stack, nil)
 }
 
-
 func (s *ComponentSuite) TestEnabledFlag() {
-	const component = "example/disabled"
+	const component = "aws-kinesis-firehose-stream/disabled"
 	const stack = "default-test"
 	s.VerifyEnabledFlag(component, stack, nil)
 }
