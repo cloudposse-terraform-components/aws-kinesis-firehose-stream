@@ -1,7 +1,10 @@
 components:
   terraform:
-    example/basic:
+    kinesis-firehose-stream/basic:
       metadata:
-        component: target
+        component: kinesis-firehose-stream
       vars:
         enabled: true
+        name: cloudwatch-logs
+        source_cloudwatch_component_name: eks/cloudwatch
+        destination_bucket_component_name: s3-bucket/cloudwatch

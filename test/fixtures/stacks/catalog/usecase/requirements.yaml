@@ -1,0 +1,20 @@
+# These are mocked components that are used to test the kinesis-firehose-stream component.
+# They will simply return outputs the we need
+
+components:
+  terraform:
+    # CloudWatch component for EKS
+    eks/cloudwatch:
+      remote_state_backend:
+        static:
+          cloudwatch_log_group_names:
+            - "/aws/containerinsights/eks-cloudwatch/application"
+            - "/aws/containerinsights/eks-cloudwatch/host"
+            - "/aws/containerinsights/eks-cloudwatch/dataplane"
+
+    # S3 bucket for storing CloudWatch logs
+    s3-bucket/cloudwatch:
+      remote_state_backend:
+        static:
+          bucket_arn: "arn:aws:s3:::cloudwatch-logs-bucket"
+          bucket_id: "cloudwatch-logs-bucket"
