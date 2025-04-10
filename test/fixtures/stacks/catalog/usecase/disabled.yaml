@@ -2,6 +2,6 @@ components:
   terraform:
     kinesis-firehose-stream/disabled:
       metadata:
-        component: kinesis-firehose-stream
+        component: target
       vars:
         enabled: false

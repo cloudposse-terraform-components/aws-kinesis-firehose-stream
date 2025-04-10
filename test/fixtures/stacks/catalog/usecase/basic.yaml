@@ -2,7 +2,7 @@ components:
   terraform:
     kinesis-firehose-stream/basic:
       metadata:
-        component: kinesis-firehose-stream
+        component: target
       vars:
         enabled: true
         name: cloudwatch-logs

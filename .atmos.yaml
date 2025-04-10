@@ -1,5 +1,0 @@
-# Import the default Atmos configuration from the .github repository
-# https://github.com/cloudposse-terraform-components/.github/blob/main/templates/atmos.component.yaml
-import:
-  # TODO replace branch with main
-  - "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/refs/heads/feat/atmos-docs/templates/atmos.component.yaml"

@@ -1,0 +1,47 @@
+# Import the default Atmos configuration from the .github repository
+# https://github.com/cloudposse-terraform-components/.github/blob/main/templates/atmos.component.yaml
+import:
+  # TODO replace branch with main
+  - "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/refs/heads/feat/atmos-docs/templates/atmos.component.yaml"
+
+docs:
+  generate:
+    readme:
+      input:
+        - name: "kinesis-firehose-stream"
+          # Canonical GitHub repo
+          github_repo: "cloudposse-terraform-components/aws-kinesis-firehose-stream"
+          # Short description of this project
+          description: |-
+            This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery.
+          usage: |-
+            **Stack Level**: Regional
+
+            Here's an example snippet for how to use this component.
+
+            ```yaml
+            components:
+              terraform:
+                kinesis-firehose-stream/s3-to-cloudwatch:
+                  metadata:
+                    component: kinesis-firehose-stream
+                  vars:
+                    name: s3-cloudwatch-stream
+                    destination_bucket_component_name: s3-bucket/cloudwatch
+            ```
+          tags:
+            - kinesis
+            - firehose
+            - cloudwatch
+            - s3
+            - monitoring
+            - logging
+            - streaming
+          # Categories of this project
+          categories:
+            - terraform-modules/monitoring
+          # Badges to display
+          badges:
+            - name: "Latest Release"
+              image: "https://img.shields.io/github/release/cloudposse-terraform-components/aws-kinesis-firehose-stream.svg?style=for-the-badge"
+              url: "https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/releases/latest"

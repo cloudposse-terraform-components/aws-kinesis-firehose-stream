@@ -16,3 +16,11 @@ spec:
         - "**/*.tftmpl"
         - "**/modules/**"
       excluded_paths: []
+
+    - component: "s3-bucket"
+      source: github.com/cloudposse-terraform-components/aws-s3-bucket.git//src?ref={{.Version}}
+      version: v1.535.0
+      targets:
+        - "components/terraform/s3-bucket"
+      included_paths:
+        - "**/**"
