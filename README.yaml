@@ -1,0 +1,104 @@
+name: "kinesis-firehose-stream"
+
+# Canonical GitHub repo
+github_repo: "cloudposse-terraform-components/aws-kinesis-firehose-stream"
+
+# Short description of this project
+description: |-
+  This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery. It enables you to stream logs from EKS CloudWatch to an S3 bucket for long-term storage and analysis.
+
+usage: |-
+  **Stack Level**: Regional
+
+  Here's an example of how to set up a Firehose stream to capture EKS CloudWatch logs and deliver them to an S3 bucket:
+
+  ```yaml
+  components:
+    terraform:
+      # First, ensure you have the required dependencies:
+      eks/cluster:
+        vars:
+          name: eks-cluster
+          # ... other EKS cluster configuration
+
+      eks/cloudwatch:
+        vars:
+          name: eks-cloudwatch
+          # ... other CloudWatch configuration
+
+      s3-bucket/cloudwatch:
+        vars:
+          name: cloudwatch-logs-bucket
+          # ... other S3 bucket configuration
+
+      # Then configure the Firehose stream:
+      kinesis-firehose-stream/basic:
+        metadata:
+          component: kinesis-firehose-stream
+        vars:
+          name: cloudwatch-logs
+          # Source CloudWatch component name
+          source_cloudwatch_component_name: eks/cloudwatch
+          # Destination S3 bucket component name
+          destination_bucket_component_name: s3-bucket/cloudwatch
+          # Optional: Enable encryption for the Firehose stream
+          encryption_enabled: true
+  ```
+
+  This configuration will:
+  1. Create a Kinesis Firehose delivery stream
+  2. Configure it to receive logs from the specified EKS CloudWatch component
+  3. Deliver the logs to the specified S3 bucket
+  4. Optionally enable encryption for the stream
+
+include:
+  - "docs/terraform.md"
+
+tags:
+  - terraform
+  - terraform-modules
+  - aws
+  - components
+  - terraform-components
+  - kinesis
+  - firehose
+  - cloudwatch
+  - s3
+  - monitoring
+  - logging
+  - eks
+
+# Categories of this project
+categories:
+  - terraform-modules/aws
+  - terraform-components
+
+# License of this project
+license: "APACHE2"
+
+# Badges to display
+badges:
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse-terraform-components/aws-kinesis-firehose-stream.svg?style=for-the-badge"
+    url: "https://github.com/cloudposse-terraform-components/aws-kinesis-firehose-stream/releases/latest"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/for-the-badge.svg"
+    url: "https://slack.cloudposse.com"
+
+references:
+  - name: "Cloud Posse Documentation"
+    description: "Complete documentation for the Cloud Posse solution"
+    url: "https://docs.cloudposse.com"
+  - name: "Reference Architectures"
+    description: "Launch effortlessly with our turnkey reference architectures, built either by your team or ours."
+    url: "https://cloudposse.com/"
+
+related:
+- name: "Cloud Posse Terraform Modules"
+  description: Our collection of reusable Terraform modules used by our reference architectures.
+  url: "https://docs.cloudposse.com/modules/"
+- name: "Atmos"
+  description: "Atmos is like docker-compose but for your infrastructure"
+  url: "https://atmos.tools"
+
+contributors: [] # If included generates contribs
