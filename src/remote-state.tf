@@ -12,7 +12,7 @@ variable "source_cloudwatch_component_name" {
 
 module "s3_bucket" {
   source  = "cloudposse/stack-config/yaml//modules/remote-state"
-  version = "1.5.0"
+  version = "1.8.0"
 
   component = var.destination_bucket_component_name
 
@@ -21,7 +21,7 @@ module "s3_bucket" {
 
 module "cloudwatch" {
   source  = "cloudposse/stack-config/yaml//modules/remote-state"
-  version = "1.5.0"
+  version = "1.8.0"
 
   component = var.source_cloudwatch_component_name
 

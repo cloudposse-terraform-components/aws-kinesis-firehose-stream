@@ -37,9 +37,9 @@ module "firehose_role" {
     ]
   }
 
-  policy_documents = [
+  policy_documents = local.enabled ? [
     data.aws_iam_policy_document.firehose_to_s3[0].json,
-  ]
+  ] : []
 
   context = module.this.context
 }
@@ -84,9 +84,9 @@ module "cloudwatch_subscription_role" {
     ]
   }
 
-  policy_documents = [
+  policy_documents = local.enabled ? [
     data.aws_iam_policy_document.cloudwatch_to_firehose[0].json,
-  ]
+  ] : []
 
   context = module.this.context
 }

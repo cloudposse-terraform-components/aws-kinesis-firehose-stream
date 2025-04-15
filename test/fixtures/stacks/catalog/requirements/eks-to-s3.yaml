@@ -1,0 +1,41 @@
+#
+# Set up the requirements for creating a Kinesis Firehose stream from an EKS cluster to an S3 bucket
+#
+import:
+  - catalog/requirements/vpc
+  - catalog/requirements/eks-cluster
+
+components:
+  terraform:
+    # CloudWatch component for EKS
+    eks/cloudwatch:
+      vars:
+        enabled: true
+        # required for test suite
+        kube_exec_auth_role_arn_enabled: false
+
+    # S3 bucket for storing CloudWatch logs
+    s3-bucket/cloudwatch:
+      metadata:
+        component: s3-bucket
+      vars:
+        attributes:
+          - "cloudwatch"
+        sse_algorithm: "aws:kms"
+
+        # Required for test suite
+        account_map_tenant_name: "core"
+        force_destroy: true
+
+        # Configuration for all buckets
+        enabled: true
+        user_enabled: false
+        acl: "private"
+        grants: null
+        versioning_enabled: false
+        allow_encrypted_uploads_only: true
+        block_public_acls: true
+        block_public_policy: true
+        ignore_public_acls: true
+        restrict_public_buckets: true
+        allow_ssl_requests_only: true

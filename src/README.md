@@ -45,11 +45,11 @@ components:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloudwatch"></a> [cloudwatch](#module\_cloudwatch) | cloudposse/stack-config/yaml//modules/remote-state | 1.5.0 |
+| <a name="module_cloudwatch"></a> [cloudwatch](#module\_cloudwatch) | cloudposse/stack-config/yaml//modules/remote-state | 1.8.0 |
 | <a name="module_cloudwatch_subscription_role"></a> [cloudwatch\_subscription\_role](#module\_cloudwatch\_subscription\_role) | cloudposse/iam-role/aws | 0.20.0 |
 | <a name="module_firehose_role"></a> [firehose\_role](#module\_firehose\_role) | cloudposse/iam-role/aws | 0.20.0 |
 | <a name="module_iam_roles"></a> [iam\_roles](#module\_iam\_roles) | ../account-map/modules/iam-roles | n/a |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | cloudposse/stack-config/yaml//modules/remote-state | 1.5.0 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | cloudposse/stack-config/yaml//modules/remote-state | 1.8.0 |
 | <a name="module_stream_label"></a> [stream\_label](#module\_stream\_label) | cloudposse/label/null | 0.25.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
@@ -94,7 +94,9 @@ components:
 
 | Name | Description |
 |------|-------------|
-| <a name="output_mock"></a> [mock](#output\_mock) | Mock output example for the Cloud Posse Terraform component template |
+| <a name="output_kinesis_firehose_stream_arn"></a> [kinesis\_firehose\_stream\_arn](#output\_kinesis\_firehose\_stream\_arn) | The ARN of the Kinesis Firehose stream |
+| <a name="output_kinesis_firehose_stream_id"></a> [kinesis\_firehose\_stream\_id](#output\_kinesis\_firehose\_stream\_id) | The ID of the Kinesis Firehose stream |
+| <a name="output_kinesis_firehose_stream_name"></a> [kinesis\_firehose\_stream\_name](#output\_kinesis\_firehose\_stream\_name) | The name of the Kinesis Firehose stream |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 <!-- prettier-ignore-end -->
 

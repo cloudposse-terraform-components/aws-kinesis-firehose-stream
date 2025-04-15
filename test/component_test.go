@@ -60,6 +60,9 @@ func (s *ComponentSuite) TestEnabledFlag() {
 func TestRunSuite(t *testing.T) {
 	suite := new(ComponentSuite)
 	// Add dependencies
+	suite.AddDependency(t, "vpc", "default-test", nil)
+	suite.AddDependency(t, "eks/cluster", "default-test", nil)
+	suite.AddDependency(t, "eks/cloudwatch", "default-test", nil)
 	suite.AddDependency(t, "s3-bucket/cloudwatch", "default-test", nil)
 	helper.Run(t, suite)
 }
