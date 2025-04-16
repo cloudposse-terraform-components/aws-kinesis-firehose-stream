@@ -5,14 +5,50 @@ metadata:
   description: Atmos vendoring manifest
 spec:
   sources:
+    # https://github.com/cloudposse-terraform-components/aws-account-map
     - component: "account-map"
-      source: github.com/cloudposse/terraform-aws-components.git//modules/account-map?ref={{.Version}}
-      version: 1.520.0
+      source: github.com/cloudposse-terraform-components/aws-account-map.git//src?ref={{.Version}}
+      version: v1.535.2
       targets:
         - "components/terraform/account-map"
       included_paths:
-        - "**/*.tf"
-        - "**/*.md"
-        - "**/*.tftmpl"
-        - "**/modules/**"
+        - "**/**"
       excluded_paths: []
+
+    # https://github.com/cloudposse-terraform-components/aws-s3-bucket
+    - component: "s3-bucket"
+      source: github.com/cloudposse-terraform-components/aws-s3-bucket.git//src?ref={{.Version}}
+      version: v1.535.1
+      targets:
+        - "components/terraform/s3-bucket"
+      included_paths:
+        - "**/**"
+
+    # https://github.com/cloudposse-terraform-components/aws-vpc
+    - component: "vpc"
+      source: github.com/cloudposse-terraform-components/aws-vpc.git//src?ref={{.Version}}
+      version: v1.537.1
+      targets:
+        - "components/terraform/vpc"
+      included_paths:
+        - "**/**"
+
+    # https://github.com/cloudposse-terraform-components/aws-eks-cluster
+    - component: "eks/cluster"
+      source: github.com/cloudposse-terraform-components/aws-eks-cluster.git//src?ref={{.Version}}
+      version: v1.535.3
+      targets:
+        - "components/terraform/eks/cluster"
+      included_paths:
+        - "**/**"
+
+    # https://github.com/cloudposse-terraform-components/aws-eks-cloudwatch
+    - component: "eks/cloudwatch"
+      source: github.com/cloudposse-terraform-components/aws-eks-cloudwatch.git//src?ref={{.Version}}
+      # TODO set to version once PR is merged
+      #version: 1.535.0
+      version: init
+      targets:
+        - "components/terraform/eks/cloudwatch"
+      included_paths:
+        - "**/**"

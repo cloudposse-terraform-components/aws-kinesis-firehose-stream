@@ -1,4 +1,5 @@
 import:
   - orgs/default/test/_defaults
+  - catalog/requirements/eks-to-s3
   - catalog/usecase/basic
   - catalog/usecase/disabled

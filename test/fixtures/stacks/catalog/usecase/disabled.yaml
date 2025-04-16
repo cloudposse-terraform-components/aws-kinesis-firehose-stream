@@ -1,6 +1,6 @@
 components:
   terraform:
-    example/disabled:
+    kinesis-firehose-stream/disabled:
       metadata:
         component: target
       vars:
