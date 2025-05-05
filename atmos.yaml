@@ -19,4 +19,5 @@ docs:
         sort_by: "name"
       input:
         - "./README.yaml"
-        - name: alternate
+        - description: |-
+            This description is different

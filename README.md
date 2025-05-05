@@ -27,7 +27,7 @@
 
 -->
 
-This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery. It enables you to stream logs from EKS CloudWatch to an S3 bucket for long-term storage and analysis.
+This description is different
 
 
 > [!TIP]
