@@ -1,6 +1,3 @@
-settings:
-  list_merge_strategy: replace
-
 docs:
   generate:
     readme:
