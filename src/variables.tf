@@ -1,6 +1,6 @@
 variable "region" {
   type        = string
-  description = "AWS Region"
+  description = "AWS Region 2"
 }
 
 variable "encryption_enabled" {

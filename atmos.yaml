@@ -15,6 +15,8 @@ docs:
         show_providers: false
         sort_by: "name"
       input:
+        - description: |-
+            This description shouldnt exist
         - "./README.yaml"
         - description: |-
             This description is different
