@@ -9,7 +9,7 @@ docs:
       terraform:
         enabled: true
         source: src
-        format: "markdown"
+        format: "table"
         hide_empty: false
         indent_level: 2
         show_inputs: true
@@ -32,7 +32,7 @@ docs:
       terraform:
         enabled: true
         source: .
-        format: "markdown"
+        format: "table"
         hide_empty: false
         indent_level: 2
         show_inputs: true
