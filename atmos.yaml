@@ -2,8 +2,10 @@ docs:
   generate:
     readme:
       base-dir: .
-      template: "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/c5b35c37ab5a06bdc46fb75f016b4b9b913dae77/templates/README.md.gotmpl"
+      template: "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/feat/atmos-docs/templates/README.md.gotmpl"
       output: "README.md"
+
+      # Make sure we can generate terraform-docs
       terraform:
         enabled: true
         source: src/
@@ -14,9 +16,28 @@ docs:
         show_outputs: true
         show_providers: false
         sort_by: "name"
+
+      # validate inputs from multiple sources
       input:
         - description: |-
             This description shouldnt exist
         - "./README.yaml"
         - description: |-
             This description is different
+
+    component/readme:
+      base-dir: src/
+      template: "https://raw.githubusercontent.com/cloudposse-terraform-components/.github/feat/atmos-docs/templates/README.md.simple.gotmpl"
+      output: "README.md"
+      terraform:
+        enabled: true
+        source: /
+        format: "markdown"
+        hide_empty: false
+        indent_level: 2
+        show_inputs: true
+        show_outputs: true
+        show_providers: false
+        sort_by: "name"
+      input:
+        - "./README.yaml"
