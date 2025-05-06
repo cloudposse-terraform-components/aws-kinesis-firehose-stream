@@ -51,9 +51,6 @@ usage: |-
   3. Deliver the logs to the specified S3 bucket
   4. Optionally enable encryption for the stream
 
-include:
-  - "docs/terraform.md"
-
 tags:
   - terraform
   - terraform-modules

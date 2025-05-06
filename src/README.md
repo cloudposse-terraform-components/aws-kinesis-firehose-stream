@@ -1,33 +1,68 @@
 ---
 tags:
-  - component/kinesis-firehose-stream
-  - layer/monitoring
-  - provider/aws
+  - terraform
+  - terraform-modules
+  - aws
+  - components
+  - terraform-components
+  - kinesis
+  - firehose
+  - cloudwatch
+  - s3
+  - monitoring
+  - logging
+  - eks
 ---
 
-# Component: `kinesis-firehose-stream`
+# Component: `firehose-stream`
 
-This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery.
-
+This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery. It enables you to stream logs from EKS CloudWatch to an S3 bucket for long-term storage and analysis.
 ## Usage
 
 **Stack Level**: Regional
 
-Here's an example snippet for how to use this component.
+Here's an example of how to set up a Firehose stream to capture EKS CloudWatch logs and deliver them to an S3 bucket:
 
 ```yaml
 components:
   terraform:
-    kinesis-firehose-stream/s3-to-cloudwatch:
+    # First, ensure you have the required dependencies:
+    eks/cluster:
+      vars:
+        name: eks-cluster
+        # ... other EKS cluster configuration
+
+    eks/cloudwatch:
+      vars:
+        name: eks-cloudwatch
+        # ... other CloudWatch configuration
+
+    s3-bucket/cloudwatch:
+      vars:
+        name: cloudwatch-logs-bucket
+        # ... other S3 bucket configuration
+
+    # Then configure the Firehose stream:
+    kinesis-firehose-stream/basic:
       metadata:
         component: kinesis-firehose-stream
       vars:
-        name: s3-cloudwatch-stream
+        name: cloudwatch-logs
+        # Source CloudWatch component name
+        source_cloudwatch_component_name: eks/cloudwatch
+        # Destination S3 bucket component name
         destination_bucket_component_name: s3-bucket/cloudwatch
+        # Optional: Enable encryption for the Firehose stream
+        encryption_enabled: true
 ```
 
-<!-- prettier-ignore-start -->
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+This configuration will:
+1. Create a Kinesis Firehose delivery stream
+2. Configure it to receive logs from the specified EKS CloudWatch component
+3. Deliver the logs to the specified S3 bucket
+4. Optionally enable encryption for the stream
+
+
 ## Requirements
 
 | Name | Version |
@@ -84,7 +119,7 @@ components:
 | <a name="input_name"></a> [name](#input\_name) | ID element. Usually the component or solution name, e.g. 'app' or 'jenkins'.<br/>This is the only ID element not also included as a `tag`.<br/>The "name" tag is set to the full `id` string. There is no tag with the value of the `name` input. | `string` | `null` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | ID element. Usually an abbreviation of your organization name, e.g. 'eg' or 'cp', to help ensure generated IDs are globally unique | `string` | `null` | no |
 | <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Terraform regular expression (regex) string.<br/>Characters matching the regex will be removed from the ID elements.<br/>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
-| <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | AWS Region 2 | `string` | n/a | yes |
 | <a name="input_source_cloudwatch_component_name"></a> [source\_cloudwatch\_component\_name](#input\_source\_cloudwatch\_component\_name) | The name of the component that will be using the source cloudwatch | `string` | `"eks/cloudwatch"` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br/>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
@@ -97,7 +132,6 @@ components:
 | <a name="output_kinesis_firehose_stream_arn"></a> [kinesis\_firehose\_stream\_arn](#output\_kinesis\_firehose\_stream\_arn) | The ARN of the Kinesis Firehose stream |
 | <a name="output_kinesis_firehose_stream_id"></a> [kinesis\_firehose\_stream\_id](#output\_kinesis\_firehose\_stream\_id) | The ID of the Kinesis Firehose stream |
 | <a name="output_kinesis_firehose_stream_name"></a> [kinesis\_firehose\_stream\_name](#output\_kinesis\_firehose\_stream\_name) | The name of the Kinesis Firehose stream |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-<!-- prettier-ignore-end -->
 
-[<img src="https://cloudposse.com/logo-300x69.svg" height="32" align="right"/>](https://cpco.io/component)
+
+[<img src="https://cloudposse.com/logo-300x69.svg" height="32" align="right"/>](https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=)
