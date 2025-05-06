@@ -8,7 +8,7 @@ docs:
       # Make sure we can generate terraform-docs
       terraform:
         enabled: true
-        source: src/
+        source: src
         format: "markdown"
         hide_empty: false
         indent_level: 2
@@ -31,7 +31,7 @@ docs:
       output: "README.md"
       terraform:
         enabled: true
-        source: /
+        source: .
         format: "markdown"
         hide_empty: false
         indent_level: 2
