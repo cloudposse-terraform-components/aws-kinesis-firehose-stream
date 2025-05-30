@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "firehose_to_s3" {
 
 module "firehose_role" {
   source  = "cloudposse/iam-role/aws"
-  version = "0.20.0"
+  version = "0.21.0"
 
   enabled = local.enabled
   attributes = [
@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "cloudwatch_to_firehose" {
 
 module "cloudwatch_subscription_role" {
   source  = "cloudposse/iam-role/aws"
-  version = "0.20.0"
+  version = "0.21.0"
 
   enabled = local.enabled
   attributes = [
