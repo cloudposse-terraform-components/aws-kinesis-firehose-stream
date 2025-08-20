@@ -1,33 +1,69 @@
 ---
 tags:
-  - component/kinesis-firehose-stream
-  - layer/monitoring
-  - provider/aws
+  - terraform
+  - terraform-modules
+  - aws
+  - components
+  - terraform-components
+  - kinesis
+  - firehose
+  - cloudwatch
+  - s3
+  - monitoring
+  - logging
+  - eks
 ---
 
-# Component: `kinesis-firehose-stream`
+# Component: `firehose-stream`
 
-This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery.
-
+This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery. It enables you to stream logs from EKS CloudWatch to an S3 bucket for long-term storage and analysis.
 ## Usage
 
 **Stack Level**: Regional
 
-Here's an example snippet for how to use this component.
+Here's an example of how to set up a Firehose stream to capture EKS CloudWatch logs and deliver them to an S3 bucket:
 
 ```yaml
 components:
   terraform:
-    kinesis-firehose-stream/s3-to-cloudwatch:
+    # First, ensure you have the required dependencies:
+    eks/cluster:
+      vars:
+        name: eks-cluster
+        # ... other EKS cluster configuration
+
+    eks/cloudwatch:
+      vars:
+        name: eks-cloudwatch
+        # ... other CloudWatch configuration
+
+    s3-bucket/cloudwatch:
+      vars:
+        name: cloudwatch-logs-bucket
+        # ... other S3 bucket configuration
+
+    # Then configure the Firehose stream:
+    kinesis-firehose-stream/basic:
       metadata:
         component: kinesis-firehose-stream
       vars:
-        name: s3-cloudwatch-stream
+        name: cloudwatch-logs
+        # Source CloudWatch component name
+        source_cloudwatch_component_name: eks/cloudwatch
+        # Destination S3 bucket component name
         destination_bucket_component_name: s3-bucket/cloudwatch
+        # Optional: Enable encryption for the Firehose stream
+        encryption_enabled: true
 ```
 
-<!-- prettier-ignore-start -->
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+This configuration will:
+1. Create a Kinesis Firehose delivery stream
+2. Configure it to receive logs from the specified EKS CloudWatch component
+3. Deliver the logs to the specified S3 bucket
+4. Optionally enable encryption for the stream
+
+
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -97,7 +133,25 @@ components:
 | <a name="output_kinesis_firehose_stream_arn"></a> [kinesis\_firehose\_stream\_arn](#output\_kinesis\_firehose\_stream\_arn) | The ARN of the Kinesis Firehose stream |
 | <a name="output_kinesis_firehose_stream_id"></a> [kinesis\_firehose\_stream\_id](#output\_kinesis\_firehose\_stream\_id) | The ID of the Kinesis Firehose stream |
 | <a name="output_kinesis_firehose_stream_name"></a> [kinesis\_firehose\_stream\_name](#output\_kinesis\_firehose\_stream\_name) | The name of the Kinesis Firehose stream |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-<!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
-[<img src="https://cloudposse.com/logo-300x69.svg" height="32" align="right"/>](https://cpco.io/component)
+
+
+## References
+
+
+- [Cloud Posse Documentation](https://docs.cloudposse.com) - Complete documentation for the Cloud Posse solution
+
+- [Reference Architectures](https://cloudposse.com/) - Launch effortlessly with our turnkey reference architectures, built either by your team or ours.
+
+- [AWS Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/) - 
+
+- [Amazon CloudWatch Logs subscription filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html) - 
+
+- [Amazon S3](https://docs.aws.amazon.com/s3/) - 
+
+
+
+
+[<img src="https://cloudposse.com/logo-300x69.svg" height="32" align="right"/>](https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-kinesis-firehose-stream&utm_content=)
+
