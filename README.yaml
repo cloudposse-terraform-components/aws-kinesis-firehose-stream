@@ -1,12 +1,9 @@
 name: "kinesis-firehose-stream"
-
 # Canonical GitHub repo
 github_repo: "cloudposse-terraform-components/aws-kinesis-firehose-stream"
-
 # Short description of this project
 description: |-
   This component provisions a Kinesis Firehose delivery stream and at this time supports CloudWatch to S3 delivery. It enables you to stream logs from EKS CloudWatch to an S3 bucket for long-term storage and analysis.
-
 usage: |-
   **Stack Level**: Regional
 
@@ -50,10 +47,6 @@ usage: |-
   2. Configure it to receive logs from the specified EKS CloudWatch component
   3. Deliver the logs to the specified S3 bucket
   4. Optionally enable encryption for the stream
-
-include:
-  - "docs/terraform.md"
-
 tags:
   - terraform
   - terraform-modules
@@ -67,15 +60,12 @@ tags:
   - monitoring
   - logging
   - eks
-
 # Categories of this project
 categories:
   - terraform-modules/aws
   - terraform-components
-
 # License of this project
 license: "APACHE2"
-
 # Badges to display
 badges:
   - name: "Latest Release"
@@ -84,7 +74,6 @@ badges:
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/for-the-badge.svg"
     url: "https://slack.cloudposse.com"
-
 references:
   - name: "Cloud Posse Documentation"
     description: "Complete documentation for the Cloud Posse solution"
@@ -92,13 +81,20 @@ references:
   - name: "Reference Architectures"
     description: "Launch effortlessly with our turnkey reference architectures, built either by your team or ours."
     url: "https://cloudposse.com/"
-
+  - name: "AWS Kinesis Data Firehose"
+    description: ""
+    url: "https://docs.aws.amazon.com/firehose/"
+  - name: "Amazon CloudWatch Logs subscription filters"
+    description: ""
+    url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html"
+  - name: "Amazon S3"
+    description: ""
+    url: "https://docs.aws.amazon.com/s3/"
 related:
-- name: "Cloud Posse Terraform Modules"
-  description: Our collection of reusable Terraform modules used by our reference architectures.
-  url: "https://docs.cloudposse.com/modules/"
-- name: "Atmos"
-  description: "Atmos is like docker-compose but for your infrastructure"
-  url: "https://atmos.tools"
-
+  - name: "Cloud Posse Terraform Modules"
+    description: Our collection of reusable Terraform modules used by our reference architectures.
+    url: "https://docs.cloudposse.com/modules/"
+  - name: "Atmos"
+    description: "Atmos is like docker-compose but for your infrastructure"
+    url: "https://atmos.tools"
 contributors: [] # If included generates contribs
