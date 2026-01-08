@@ -45,9 +45,7 @@ spec:
     # https://github.com/cloudposse-terraform-components/aws-eks-cloudwatch
     - component: "eks/cloudwatch"
       source: github.com/cloudposse-terraform-components/aws-eks-cloudwatch.git//src?ref={{.Version}}
-      # TODO set to version once PR is merged
-      #version: 1.535.0
-      version: init
+      version: v0.2.0
       targets:
         - "components/terraform/eks/cloudwatch"
       included_paths:
